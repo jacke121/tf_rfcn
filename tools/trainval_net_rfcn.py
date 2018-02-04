@@ -27,13 +27,14 @@ def parse_args():
   parser = argparse.ArgumentParser(description='Train a Fast R-CNN network')
   parser.add_argument('--cfg', dest='cfg_file',
                       help='optional config file',
-                      default=None, type=str)
+                      default=r'E:\kangcheng\python\rfcn\tf_rfcn-master\experiments\cfgs\res101_rfcn.yml', type=str)
   parser.add_argument('--weight', dest='weight',
                       help='initialize with pretrained model weights',
+                      default=r"D:\kangcheng\backup1031_11k_7635\res101_faster_rcnn_iter_110000.ckpt",
                       type=str)
   parser.add_argument('--imdb', dest='imdb_name',
                       help='dataset to train on',
-                      default='voc_2007_trainval+voc_2012_trainval', type=str)
+                      default='voc_2007_trainval', type=str)
   parser.add_argument('--imdbval', dest='imdbval_name',
                       help='dataset to validate on',
                       default='voc_2007_test', type=str)
@@ -50,9 +51,9 @@ def parse_args():
                       help='set config keys', default=None,
                       nargs=argparse.REMAINDER)
 
-  if len(sys.argv) == 1:
-    parser.print_help()
-    sys.exit(1)
+  # if len(sys.argv) == 1:
+  #   parser.print_help()
+  #   sys.exit(1)
 
   args = parser.parse_args()
   return args
