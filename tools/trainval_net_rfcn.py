@@ -7,16 +7,18 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-from model.train_val_rfcn_iteration4 import get_training_roidb, train_net
-from model.config import cfg, cfg_from_file, cfg_from_list, get_output_dir, get_output_tb_dir
-from datasets.factory import get_imdb
-import datasets.imdb
 import argparse
 import pprint
-import numpy as np
 import sys
 
-from nets.resnet_v1_rfcn_hole_iterator4 import resnetv1
+import numpy as np
+
+import datasets.imdb
+from datasets.factory import get_imdb
+from model.config import cfg, cfg_from_file, cfg_from_list, get_output_dir, get_output_tb_dir
+from model.train_val_rfcn_iteration4 import get_training_roidb, train_net
+from resnet_v1_rfcn_hole_iterator4 import resnetv1
+
 
 def parse_args():
   """

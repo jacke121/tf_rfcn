@@ -7,24 +7,25 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import argparse
+import pprint
+import sys
+
+import numpy as np
+from nets.resnet_v1_rfcn_hole import resnetv1
+# from nets.resnet_v1_rfcn_hole_local_global import resnetv1
+# from nets.resnet_v1_rfcn_hole_local_global_without_bbox import resnetv1
+# from nets.resnet_v1_rfcn_hole_local_global_elements_wise import resnetv1
+
+import datasets.imdb
+from datasets.factory import get_imdb
+from model.config import cfg, cfg_from_file, cfg_from_list, get_output_dir, get_output_tb_dir
 # import _init_paths
 # from model.train_val import get_training_roidb, train_net
 # from model.train_val_rfcn import get_training_roidb, train_net
 from model.train_val import get_training_roidb, train_net
-from model.config import cfg, cfg_from_file, cfg_from_list, get_output_dir, get_output_tb_dir
-from datasets.factory import get_imdb
-import datasets.imdb
-import argparse
-import pprint
-import numpy as np
-import sys
-
-import tensorflow as tf
 from nets.vgg16 import vgg16
-# from nets.resnet_v1_rfcn_hole import resnetv1
-# from nets.resnet_v1_rfcn_hole_local_global import resnetv1
-# from nets.resnet_v1_rfcn_hole_local_global_without_bbox import resnetv1
-from nets.resnet_v1_rfcn_hole_local_global_elements_wise import resnetv1
+
 
 def parse_args():
   """
@@ -33,13 +34,14 @@ def parse_args():
   parser = argparse.ArgumentParser(description='Train a Fast R-CNN network')
   parser.add_argument('--cfg', dest='cfg_file',
                       help='optional config file',
-                      default=None, type=str)
+                      default=r'E:\kangcheng\python\rfcn\tf_rfcn-master\experiments\cfgs\res50_rfcn.yml', type=str)
   parser.add_argument('--weight', dest='weight',
                       help='initialize with pretrained model weights',
+                      default=r"D:\kangcheng\backup1031_11k_7635\res101_faster_rcnn_iter_110000.ckpt",
                       type=str)
   parser.add_argument('--imdb', dest='imdb_name',
                       help='dataset to train on',
-                      default='voc_2007_trainval+voc_2012_trainval', type=str)
+                      default="voc_2007_trainval", type=str)#'voc_2007_trainval+voc_2012_trainval'
   parser.add_argument('--imdbval', dest='imdbval_name',
                       help='dataset to validate on',
                       default='voc_2007_test', type=str)
@@ -56,9 +58,9 @@ def parse_args():
                       help='set config keys', default=None,
                       nargs=argparse.REMAINDER)
 
-  if len(sys.argv) == 1:
-    parser.print_help()
-    sys.exit(1)
+  # if len(sys.argv) == 1:
+  #   parser.print_help()
+  #   sys.exit(1)
 
   args = parser.parse_args()
   return args

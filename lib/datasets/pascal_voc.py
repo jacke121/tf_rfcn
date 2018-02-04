@@ -19,7 +19,7 @@ import utils.cython_bbox
 import pickle
 import subprocess
 import uuid
-from .voc_eval import voc_eval
+from voc_eval import voc_eval
 from model.config import cfg
 
 
@@ -32,7 +32,7 @@ class pascal_voc(imdb):
       else devkit_path
     self._data_path = os.path.join(self._devkit_path, 'VOC' + self._year)
     self._classes = ('__background__',  # always index 0
-                     'aeroplane', 'bicycle', 'bird', 'boat',
+                     'mouse', 'bicycle', 'bird', 'boat',
                      'bottle', 'bus', 'car', 'cat', 'chair',
                      'cow', 'diningtable', 'dog', 'horse',
                      'motorbike', 'person', 'pottedplant',

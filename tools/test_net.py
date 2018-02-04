@@ -7,22 +7,24 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-# import _init_paths
-from model.test import test_net
-from model.config import cfg, cfg_from_file, cfg_from_list
-from datasets.factory import get_imdb
 import argparse
+import os
 import pprint
-import time, os, sys
+import sys
 
 import tensorflow as tf
-from nets.vgg16 import vgg16
 # from nets.resnet_v1_rfcn_hole import resnetv1
-from nets.resnet_v1_rfcn_hole_local_global import resnetv1
 # from nets.resnet_v1_rfcn_hole_local_global_without_bbox import resnetv1
 # from nets.resnet_v1_rfcn_hole_local_global_without_context import resnetv1
 from nets.resnet_v1_rfcn_hole_local_global_elements_wise import resnetv1
+
+from datasets.factory import get_imdb
+from model.config import cfg, cfg_from_file, cfg_from_list
+# import _init_paths
+from model.test import test_net
 from nets.mobilenet_v1 import mobilenetv1
+from vgg16 import vgg16
+
 
 def parse_args():
   """

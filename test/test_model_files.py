@@ -1,19 +1,16 @@
 import tensorflow as tf
 import numpy as np
 import cv2
-from nets.resnet_v1_rfcn_hole import resnetv1
+from resnet_v1_rfcn_hole import resnetv1
 import argparse
 import sys
-from model.config import cfg, cfg_from_file, cfg_from_list
+from model.config import cfg_from_file, cfg_from_list
 from datasets.factory import get_imdb
 import pprint
 import os
 from utils.blob import im_list_to_blob
-from model.bbox_transform import clip_boxes, bbox_transform_inv
 import time
-from model.test import im_detect
-from model.config import cfg, get_output_dir
-from utils.cython_nms import nms, nms_new
+from model.config import cfg
 from model.test import test_net
 
 class Timer(object):
