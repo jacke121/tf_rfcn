@@ -250,7 +250,7 @@ __C.EPS = 1e-14
 __C.ROOT_DIR = osp.abspath(osp.join(osp.dirname(__file__), '..', '..'))
 
 # Data directory
-__C.DATA_DIR =r"E:\python\mouse_detect_demo\yolov2\yolov2_train\data\pascal_voc" #osp.abspath(osp.join(__C.ROOT_DIR, 'data'))
+__C.DATA_DIR =r"D:\data\pascal_voc" #osp.abspath(osp.join(__C.ROOT_DIR, 'data'))
 
 # Name (or path to) the matlab executable
 __C.MATLAB = 'matlab'
